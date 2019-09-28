@@ -1,2 +1,2 @@
-# ct
-pythonstudy
+# 
+python_Django study
