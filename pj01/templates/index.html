@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load staticfiles %}{# 就这个 #}
+{% load my_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>学生注册</h1>
+    <form action="/app01/register" method="post">
+        {% csrf_token %} {# post 请求 加这个
+        <p>姓名 <input type="text" name="user"></input></p>
+        <p>年龄 <input type="text" name="age"></input></p>
+        <p>爱好
+            <input type="checkbox" name="hobby" value="1">足球</input>
+            <input type="checkbox" name="hobby" value="2">篮球</input>
+            <input type="checkbox" name="hobby" value="3">乒乓球</input>
+        </p>
+        <p><input type="submit" >提交</p>
+    </form>
+
+    {% include "base.html" %}
+
+    {{ value8|urlencode }}
+
+    {{ value6|striptags }}
+    <br>
+    {{ value1|filter_multi:2 }}
+        <br>
+    {% if value1|filter_multi:30 > 100 %}
+        {{ value1|filter_multi:30 }}
+    {% endif %}
+
+    {% simple_tag_multi 1 2 %}
+
+
+    {% block content %}
+    {% endblock %}
+
+    {{ block.super }}
+
+{#    <script src="../statics/jquery-3.1.1.js"></script>#}
+{#    <script src="/static/jquery-3.1.1.js"></script>#}
+        <script src="{% static 'jquery-3.1.1.js' %}"></script>
+
+
+    <script>
+        $("h1").css("color","red")
+    </script>
+</body>
+</html>
